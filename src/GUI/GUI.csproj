@@ -13,10 +13,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>labwork2</ApplicationTitle>
+		<ApplicationTitle>XML Analyzer</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.labwork2</ApplicationId>
+		<ApplicationId>com.companyname.XML Analyzer</ApplicationId>
 		<ApplicationIdGuid>6e9643f1-434e-4553-90a8-7175e644b351</ApplicationIdGuid>
 
 		<!-- Versions -->
