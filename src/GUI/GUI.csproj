@@ -16,8 +16,8 @@
 		<ApplicationTitle>XML Analyzer</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.XML Analyzer</ApplicationId>
-		<ApplicationIdGuid>6e9643f1-434e-4553-90a8-7175e644b351</ApplicationIdGuid>
+		<ApplicationId>com.companyname.xmlanalyzer</ApplicationId>
+		<ApplicationIdGuid>3eba2cad-c815-420a-ac56-e84a9cd9267e</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -50,7 +50,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\XML_Manager\XML_Manager.csproj" />
 	</ItemGroup>
 
 </Project>

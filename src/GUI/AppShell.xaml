@@ -7,7 +7,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
+        Title="XML Analyzer"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
