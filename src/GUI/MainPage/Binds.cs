@@ -20,11 +20,12 @@ public partial class MainPage : ContentPage
 		var customFileType = new FilePickerFileType(
                 new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
-                    { DevicePlatform.Android, new[] { "application/xml", "text/xml" } },
+                    { DevicePlatform.Android, new[] { "text/xml" } },
                 });
 		var options = new PickOptions() {PickerTitle = "Select xml file with books", FileTypes = customFileType};
 		ChosenFile = await filePicker.PickAsync(options);
 		StatusLabel.Text = "Chosen file: " + ChosenFile.FileName;
+		await ValidateFile();
 	}
 
 	private async void ExportButton_Clicked(object sender, EventArgs e)
@@ -57,7 +58,11 @@ public partial class MainPage : ContentPage
 		var filterOptions = CollectFilters();
 		ClearResults();
 
-		// Find results and display them
+		var results = parser.Find(filterOptions);
+		Debug.WriteLine(results.Count);
+		for (int i = 1; i <= results.Count; ++i) {
+			DisplayResult(results[i - 1], i);
+		}
 	}
 
 	private void ClearButton_Clicked(object sender, EventArgs e)
@@ -67,19 +72,19 @@ public partial class MainPage : ContentPage
 
 	private async void Parser_Selected(object sender, EventArgs e)
 	{
-		var stream = await ChosenFile.OpenReadAsync();
 		switch (ParserPicker.SelectedIndex)
 		{
 			case 0:
-				parser = new SAXParser(stream);
+				parser = new SAXParser();
 				break;
 			case 1:
-				parser = new DOMParser(stream);
+				parser = new DOMParser();
 				break;
 			case 2:
-				parser = new LINQParser(stream);
+				parser = new LINQParser();
 				break;
 		}
+		await ValidateFile();
 	}
 }
 
