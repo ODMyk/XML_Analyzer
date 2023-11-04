@@ -20,4 +20,14 @@ public struct FilterOptions
         Genre = "";
         Year = "";
     }
+
+    public readonly bool ValidateBook(Book book) {
+        var title = book.Title.ToLower().Contains(Title.ToLower());
+        var year = book.Year.ToLower().Contains(Year.ToLower());
+        var description = book.Description.ToLower().Contains(Description.ToLower());
+        var genre = book.Genre.ToLower().Contains(Genre.ToLower());
+        var author = (book.Author.FirstName + " " + book.Author.LastName).ToLower().Contains(Author.ToLower());
+
+        return title && year && description && genre && author;
+    }
 }
