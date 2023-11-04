@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+			<BooksList>
+			  <Book>
+				  <Title>Cool title</Title>
+				  <Description>Very long description Very long description Very long description Very long description Very long description Very long description Very long description</Description>
+				  <Genre>Science Fiction</Genre>
+				  <Year>2023</Year>
+				  <Author>
+					   <FirstName>Dmytro</FirstName>
+					   <LastName>Ostapenko</LastName>
+				  </Author>
+			  </Book>
+			  <Book>
+				  <Title>Learn C#</Title>
+				  <Description>Basic C# programming language concepts</Description>
+				  <Genre>Technical Literature</Genre>
+				  <Year>2011</Year>
+				  <Author>
+					   <FirstName>Anton</FirstName>
+					   <LastName>Svystunov</LastName>
+				  </Author>
+			  </Book>
+			  <Book>
+				  <Title>How to become rich</Title>
+				  <Description>Reading this book will help you in earning enormous amounts of money</Description>
+				  <Genre>Strange Genre</Genre>
+				  <Year>1999</Year>
+				  <Author>
+					   <FirstName>Bill</FirstName>
+					   <LastName>Gates</LastName>
+				  </Author>
+			  </Book>
+			  <Book>
+				  <Title>Why are you crying ?</Title>
+				  <Description>Little boy named Abraham lives in Ohio, USA. One day he was returning from school when he noticed something strange...</Description>
+				  <Genre>Thriller</Genre>
+				  <Year>2003</Year>
+				  <Author>
+					   <FirstName>Rick</FirstName>
+					   <LastName>Astley</LastName>
+				  </Author>
+			  </Book>
+			</BooksList>
+			
