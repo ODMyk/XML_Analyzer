@@ -17,5 +17,6 @@ public partial class MainPage: ContentPage
 		InitializeComponent();
 		fileSaver = FileSaver.Default;
 		filePicker = FilePicker.Default;
+		ParserPicker.SelectedIndex = 1;
 	}
 }
