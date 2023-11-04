@@ -4,13 +4,19 @@ namespace XML_Manager;
 
 public class SAXParser : IParser
 {
-    private XmlTextReader reader;
-
-    public SAXParser(Stream inputStream) {
-        reader = new(inputStream);
-    }
+    private XmlReader reader;
     public IList<Book> Find(FilterOptions filters)
     {
         throw new NotImplementedException();
+    }
+
+    public bool Load(Stream inputStream)
+    {
+        try {
+            reader = XmlReader.Create(inputStream, XMLValidator.Settings);
+            return true;
+        } catch {
+            return false;
+        }
     }
 }
