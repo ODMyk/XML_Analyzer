@@ -65,18 +65,19 @@ public partial class MainPage : ContentPage
 		ClearFilters();
 	}
 
-	private void Parser_Selected(object sender, EventArgs e)
+	private async void Parser_Selected(object sender, EventArgs e)
 	{
+		var stream = await ChosenFile.OpenReadAsync();
 		switch (ParserPicker.SelectedIndex)
 		{
 			case 0:
-				parser = new SAXParser();
+				parser = new SAXParser(stream);
 				break;
 			case 1:
-				parser = new DOMParser();
+				parser = new DOMParser(stream);
 				break;
 			case 2:
-				parser = new LINQParser();
+				parser = new LINQParser(stream);
 				break;
 		}
 	}
