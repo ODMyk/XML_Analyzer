@@ -23,7 +23,16 @@ public class LINQParser : IParser
         try
         {
             document = XDocument.Load(reader);
-            
+            if (document == null) return true;
+            var result = from book in document.Descendants("Book") select
+            new Book {
+                Title = book.Element("Title")?.Value ?? "",
+                Description = book.Element("Description")?.Value ?? "",
+                Genre = book.Element("Genre")?.Value ?? "",
+                Year = book.Element("Year")?.Value ?? "",
+                Author = new Book.BookAuthor { FirstName = book.Element("Author")?.Element("FirstName")?.Value ?? "", LastName = book.Element("Author")?.Element("LastName")?.Value ?? ""}
+            };
+            foreach (var book in result) Books.Add(book);
             return true;
         }
         catch
