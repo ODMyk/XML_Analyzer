@@ -22,6 +22,7 @@ public class LINQParser : IParser
         using var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
         try
         {
+            Books.Clear();
             document = XDocument.Load(reader);
             if (document == null) return true;
             var result = from book in document.Descendants("Book") select
