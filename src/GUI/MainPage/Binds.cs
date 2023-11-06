@@ -1,6 +1,5 @@
 ﻿using XML_Manager;
 using System.Text;
-using System.Diagnostics;
 
 namespace GUI;
 
@@ -39,6 +38,7 @@ public partial class MainPage : ContentPage
 		using var stream = new MemoryStream(Encoding.Default.GetBytes(""));
 		var result = await fileSaver.SaveAsync(ChosenFile.FileName.Split(".")[0] + ".html", stream, (new CancellationTokenSource()).Token);
 		Exporter.Export(ChosenFile.FullPath, result.FilePath);
+		await DisplayAlert("Success", "File was exported successfully", "Ok");
 	}
 
 	private async void FindButton_Clicked(object sender, EventArgs e)
@@ -59,7 +59,6 @@ public partial class MainPage : ContentPage
 		ClearResults();
 
 		var results = parser.Find(filterOptions);
-		Debug.WriteLine(results.Count);
 		for (int i = 1; i <= results.Count; ++i) {
 			DisplayResult(results[i - 1], i);
 		}

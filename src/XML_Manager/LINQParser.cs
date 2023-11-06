@@ -5,19 +5,25 @@ namespace XML_Manager;
 
 public class LINQParser : IParser
 {
-    private XDocument document;
+    private readonly IList<Book> Books;
 
+    public LINQParser() {
+        Books = new List<Book>();
+    }
     public IList<Book> Find(FilterOptions filters)
     {
-        throw new NotImplementedException();
+        return Books.Where(filters.ValidateBook).ToList();
+
     }
 
     public bool Load(Stream inputStream)
     {
+        XDocument document;
         using var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
         try
         {
             document = XDocument.Load(reader);
+            
             return true;
         }
         catch
