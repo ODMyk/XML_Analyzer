@@ -4,7 +4,8 @@ public class Book
 {
     public class BookAuthor
     {
-        public BookAuthor() {
+        public BookAuthor()
+        {
             FirstName = "";
             LastName = "";
         }
@@ -12,7 +13,8 @@ public class Book
 
         public string LastName { get; set; }
     }
-    public Book() {
+    public Book()
+    {
         Title = "";
         Description = "";
         Year = "";

@@ -17,11 +17,11 @@ public partial class MainPage : ContentPage
 	private async void OpenButton_Clicked(object sender, EventArgs e)
 	{
 		var customFileType = new FilePickerFileType(
-                new Dictionary<DevicePlatform, IEnumerable<string>>
-                {
-                    { DevicePlatform.Android, new[] { "text/xml" } },
-                });
-		var options = new PickOptions() {PickerTitle = "Select xml file with books", FileTypes = customFileType};
+				new Dictionary<DevicePlatform, IEnumerable<string>>
+				{
+					{ DevicePlatform.Android, new[] { "text/xml" } },
+				});
+		var options = new PickOptions() { PickerTitle = "Select xml file with books", FileTypes = customFileType };
 		ChosenFile = await filePicker.PickAsync(options);
 		StatusLabel.Text = "Chosen file: " + ChosenFile.FileName;
 		await ValidateFile();
@@ -59,7 +59,8 @@ public partial class MainPage : ContentPage
 		ClearResults();
 
 		var results = parser.Find(filterOptions);
-		for (int i = 1; i <= results.Count; ++i) {
+		for (int i = 1; i <= results.Count; ++i)
+		{
 			DisplayResult(results[i - 1], i);
 		}
 	}
@@ -86,4 +87,3 @@ public partial class MainPage : ContentPage
 		await ValidateFile();
 	}
 }
-

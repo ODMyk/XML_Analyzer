@@ -55,23 +55,26 @@ public partial class MainPage : ContentPage
 		while (ResultsTable.RowDefinitions.Count > 1) { ResultsTable.RowDefinitions.RemoveAt(1); }
 	}
 
-	private void CreateLabel(int row, int column, string text) {
-		var label = new Label {Text = text, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+	private void CreateLabel(int row, int column, string text)
+	{
+		var label = new Label { Text = text, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
 		ResultsTable.SetRow(label, row);
 		ResultsTable.SetColumn(label, column);
 		ResultsTable.Children.Add(label);
 	}
 
-	private void CreateButton(int row, string text) {
-		var button = new Button  {Text = "View", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+	private void CreateButton(int row, string text)
+	{
+		var button = new Button { Text = "View", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
 		button.Clicked += async (object sender, EventArgs e) => await DisplayAlert("Description", text, "Ok");
 		ResultsTable.SetRow(button, row);
 		ResultsTable.SetColumn(button, 4);
 		ResultsTable.Children.Add(button);
 	}
 
-	private void DisplayResult(Book book, int row) {
-		ResultsTable.RowDefinitions.Add(new RowDefinition{Height = GridLength.Auto});
+	private void DisplayResult(Book book, int row)
+	{
+		ResultsTable.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 		CreateLabel(row, 0, book.Title);
 		CreateLabel(row, 1, book.Author.FirstName + " " + book.Author.LastName);
 		CreateLabel(row, 2, book.Year);
