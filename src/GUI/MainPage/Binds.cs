@@ -2,7 +2,7 @@
 
 public partial class MainPage : ContentPage
 {
-	private async void ExitButton_Clicked(object _, EventArgs _)
+	private async void ExitButton_Clicked(object _, EventArgs __)
 	{
 		var option = await DisplayAlert("Confirm exit", "Are you sure tou want to exit the program ?", "Yes", "No");
 		if (option)
@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
 		}
 	}
 
-	private async void OpenButton_Clicked(object _, EventArgs _)
+	private async void OpenButton_Clicked(object _, EventArgs __)
 	{
 		var customFileType = new FilePickerFileType(
 				new Dictionary<DevicePlatform, IEnumerable<string>>
@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
 		await ValidateFile();
 	}
 
-	private async void ExportButton_Clicked(object _, EventArgs _)
+	private async void ExportButton_Clicked(object _, EventArgs __)
 	{
 		if (ChosenFile == null)
 		{
@@ -38,7 +38,7 @@ public partial class MainPage : ContentPage
 		await DisplayAlert("Success", "File was exported successfully", "Ok");
 	}
 
-	private async void FindButton_Clicked(object _, EventArgs _)
+	private async void FindButton_Clicked(object _, EventArgs __)
 	{
 		if (ChosenFile == null)
 		{
@@ -62,12 +62,12 @@ public partial class MainPage : ContentPage
 		}
 	}
 
-	private void ClearButton_Clicked(object _, EventArgs _)
+	private void ClearButton_Clicked(object _, EventArgs __)
 	{
 		ClearFilters();
 	}
 
-	private async void Parser_Selected(object _, EventArgs _)
+	private async void Parser_Selected(object _, EventArgs __)
 	{
 		switch (ParserPicker.SelectedIndex)
 		{
