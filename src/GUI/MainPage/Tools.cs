@@ -1,3 +1,5 @@
+using XML_Manager;
+
 namespace GUI;
 
 public partial class MainPage : ContentPage
@@ -33,7 +35,7 @@ public partial class MainPage : ContentPage
 		return filters;
 	}
 
-	private static void ClearFilters()
+	private void ClearFilters()
 	{
 		TitleEntry.Text = "";
 		TitleCheckbox.IsChecked = false;
@@ -88,10 +90,7 @@ public partial class MainPage : ContentPage
 
 	private void DisplayResult(Book book, int row)
 	{
-		ResultsTable.RowDefinitions.Add(new RowDefinition
-		{
-			Height = GridLength.Auto
-		});
+		ResultsTable.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 		CreateLabel(row, 0, book.Title);
 		CreateLabel(row, 1, book.Author.FirstName + " " + book.Author.LastName);
 		CreateLabel(row, 2, book.Year);

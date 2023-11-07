@@ -1,4 +1,7 @@
-﻿namespace GUI;
+﻿using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
+
+namespace GUI;
 
 public static class MauiProgram
 {

@@ -29,7 +29,6 @@ public class LINQParser : IParser
             {
                 return true;
             }
-
             var result = from book in document.Descendants("Book")
                          select
             new Book

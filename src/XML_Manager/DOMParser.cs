@@ -1,5 +1,8 @@
 using System.Xml;
+using System.Xml.Schema;
+using System.Diagnostics;
 using System.Xml.Serialization;
+using System.Linq;
 
 namespace XML_Manager;
 
@@ -24,7 +27,6 @@ public class DOMParser : IParser
             {
                 return true;
             }
-
             var serializer = new XmlSerializer(typeof(Book));
             foreach (XmlNode child in document.DocumentElement.ChildNodes)
             {
