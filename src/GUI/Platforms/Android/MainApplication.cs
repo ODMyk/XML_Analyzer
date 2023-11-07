@@ -1,7 +1,4 @@
-﻿using Android.App;
-using Android.Runtime;
-
-namespace GUI;
+﻿namespace GUI;
 
 [Application]
 public class MainApplication : MauiApplication

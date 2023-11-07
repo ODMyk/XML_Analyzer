@@ -21,7 +21,8 @@ public struct FilterOptions
         Year = "";
     }
 
-    public readonly bool ValidateBook(Book book) {
+    public readonly bool ValidateBook(Book book)
+    {
         var title = book.Title.ToLower().Contains(Title.ToLower());
         var year = book.Year.ToLower().Contains(Year.ToLower());
         var description = book.Description.ToLower().Contains(Description.ToLower());

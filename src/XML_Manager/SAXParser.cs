@@ -23,7 +23,11 @@ public class SAXParser : IParser
             var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
             while (reader.Read())
             {
-                if (!(reader.NodeType == XmlNodeType.Element && reader.Name == "Book")) continue;
+                if (!(reader.NodeType == XmlNodeType.Element && reader.Name == "Book"))
+                {
+                    continue;
+                }
+
                 var book = new Book();
                 SkipToText(reader);
                 book.Title = reader.Value;
@@ -50,6 +54,12 @@ public class SAXParser : IParser
 
     private static void SkipToText(XmlReader reader)
     {
-        do { if (!reader.Read()) throw new Exception(); } while (reader.NodeType != XmlNodeType.Text);
+        do
+        {
+            if (!reader.Read())
+            {
+                throw new Exception();
+            }
+        } while (reader.NodeType != XmlNodeType.Text);
     }
 }

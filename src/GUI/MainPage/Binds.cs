@@ -1,11 +1,8 @@
-﻿using XML_Manager;
-using System.Text;
-
-namespace GUI;
+﻿namespace GUI;
 
 public partial class MainPage : ContentPage
 {
-	private async void ExitButton_Clicked(object sender, EventArgs e)
+	private async void ExitButton_Clicked(object _, EventArgs _)
 	{
 		var option = await DisplayAlert("Confirm exit", "Are you sure tou want to exit the program ?", "Yes", "No");
 		if (option)
@@ -14,7 +11,7 @@ public partial class MainPage : ContentPage
 		}
 	}
 
-	private async void OpenButton_Clicked(object sender, EventArgs e)
+	private async void OpenButton_Clicked(object _, EventArgs _)
 	{
 		var customFileType = new FilePickerFileType(
 				new Dictionary<DevicePlatform, IEnumerable<string>>
@@ -27,7 +24,7 @@ public partial class MainPage : ContentPage
 		await ValidateFile();
 	}
 
-	private async void ExportButton_Clicked(object sender, EventArgs e)
+	private async void ExportButton_Clicked(object _, EventArgs _)
 	{
 		if (ChosenFile == null)
 		{
@@ -36,12 +33,12 @@ public partial class MainPage : ContentPage
 		}
 
 		using var stream = new MemoryStream(Encoding.Default.GetBytes(""));
-		var result = await fileSaver.SaveAsync(ChosenFile.FileName.Split(".")[0] + ".html", stream, (new CancellationTokenSource()).Token);
+		var result = await fileSaver.SaveAsync(ChosenFile.FileName.Split(".")[0] + ".html", stream, new CancellationTokenSource().Token);
 		Exporter.Export(ChosenFile.FullPath, result.FilePath);
 		await DisplayAlert("Success", "File was exported successfully", "Ok");
 	}
 
-	private async void FindButton_Clicked(object sender, EventArgs e)
+	private async void FindButton_Clicked(object _, EventArgs _)
 	{
 		if (ChosenFile == null)
 		{
@@ -65,12 +62,12 @@ public partial class MainPage : ContentPage
 		}
 	}
 
-	private void ClearButton_Clicked(object sender, EventArgs e)
+	private void ClearButton_Clicked(object _, EventArgs _)
 	{
 		ClearFilters();
 	}
 
-	private async void Parser_Selected(object sender, EventArgs e)
+	private async void Parser_Selected(object _, EventArgs _)
 	{
 		switch (ParserPicker.SelectedIndex)
 		{
