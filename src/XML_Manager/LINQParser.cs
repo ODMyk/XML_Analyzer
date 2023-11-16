@@ -10,10 +10,10 @@ public class LINQParser : Parser
         Books = new List<Book>();
     }
 
-    public override bool Load(Stream inputStream)
+    public override bool Load(Stream inputStream, XmlReaderSettings settings)
     {
         XDocument document;
-        using var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
+        using var reader = XmlReader.Create(inputStream, settings);
         try
         {
             Books.Clear();

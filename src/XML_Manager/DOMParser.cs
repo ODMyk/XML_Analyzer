@@ -13,11 +13,11 @@ public class DOMParser : Parser
         Books = new List<Book>();
     }
 
-    public override bool Load(Stream inputStream)
+    public override bool Load(Stream inputStream, XmlReaderSettings settings)
     {
         Books.Clear();
         var document = new XmlDocument();
-        using var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
+        using var reader = XmlReader.Create(inputStream, settings);
         try
         {
             document.Load(reader);

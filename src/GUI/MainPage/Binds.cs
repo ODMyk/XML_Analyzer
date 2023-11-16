@@ -1,5 +1,7 @@
 ﻿using XML_Manager;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GUI;
 
@@ -15,9 +17,28 @@ public partial class MainPage : ContentPage
 		}
 	}
 
+	private void ImportValidationSchema(string filepath)
+	{
+		var schema = new XmlSchemaSet();
+		schema.Add("", filepath);
 
+		validationSettings = new XmlReaderSettings
+		{
+			Schemas = schema
+		};
+		validationSettings.ValidationEventHandler += (object? sender, ValidationEventArgs e) =>
+		{
+			if (e.Severity == XmlSeverityType.Error) throw new Exception();
+		};
+		validationSettings.ValidationType = ValidationType.Schema;
+	}
 	private async void OpenButton_Clicked(object sender, EventArgs e)
 	{
+		if (validationSettings == null)
+		{
+			ImportValidationSchema("/storage/emulated/0/documents/books.xsd");
+		}
+
 		var customFileType = new FilePickerFileType(
 				new Dictionary<DevicePlatform, IEnumerable<string>>
 				{
@@ -37,9 +58,15 @@ public partial class MainPage : ContentPage
 			return;
 		}
 
+		if (exporter == null)
+		{
+			exporter = new();
+			exporter.Load("/storage/emulated/0/documents/books.xsl");
+		}
+
 		using var stream = new MemoryStream(Encoding.Default.GetBytes(""));
 		var result = await fileSaver.SaveAsync(ChosenFile.FileName.Split(".")[0] + ".html", stream, new CancellationTokenSource().Token);
-		Exporter.Export(ChosenFile.FullPath, result.FilePath);
+		exporter.Transform(ChosenFile.FullPath, result.FilePath);
 		await DisplayAlert("Success", "File was exported successfully", "Ok");
 	}
 

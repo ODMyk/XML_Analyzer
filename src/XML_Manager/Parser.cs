@@ -1,3 +1,5 @@
+using System.Xml;
+
 namespace XML_Manager;
 
 public abstract class Parser : IParser
@@ -9,5 +11,5 @@ public abstract class Parser : IParser
 
     }
 
-    public abstract bool Load(Stream inputstream);
+    public abstract bool Load(Stream inputstream, XmlReaderSettings settings);
 }

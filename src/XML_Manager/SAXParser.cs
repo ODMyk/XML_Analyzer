@@ -9,12 +9,12 @@ public class SAXParser : Parser
         Books = new List<Book>();
     }
 
-    public override bool Load(Stream inputStream)
+    public override bool Load(Stream inputStream, XmlReaderSettings settings)
     {
         Books.Clear();
         try
         {
-            var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
+            var reader = XmlReader.Create(inputStream, settings);
             while (reader.Read())
             {
                 if (!(reader.NodeType == XmlNodeType.Element && reader.Name == "Book"))

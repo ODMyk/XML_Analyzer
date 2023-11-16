@@ -104,7 +104,7 @@ public partial class MainPage : ContentPage
 		{
 			return;
 		}
-		if (parser.Load(await ChosenFile.OpenReadAsync()))
+		if (parser.Load(await ChosenFile.OpenReadAsync(), validationSettings))
 		{
 			return;
 		}
