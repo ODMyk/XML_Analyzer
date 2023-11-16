@@ -2,20 +2,14 @@ using System.Xml;
 
 namespace XML_Manager;
 
-public class SAXParser : IParser
+public class SAXParser : Parser
 {
-    private readonly IList<Book> Books;
-
     public SAXParser()
     {
         Books = new List<Book>();
     }
-    public IList<Book> Find(FilterOptions filters)
-    {
-        return Books.Where(filters.ValidateBook).ToList();
-    }
 
-    public bool Load(Stream inputStream)
+    public override bool Load(Stream inputStream)
     {
         Books.Clear();
         try

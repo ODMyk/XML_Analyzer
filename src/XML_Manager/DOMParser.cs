@@ -6,16 +6,14 @@ using System.Linq;
 
 namespace XML_Manager;
 
-public class DOMParser : IParser
+public class DOMParser : Parser
 {
-    private readonly IList<Book> Books;
-
     public DOMParser()
     {
         Books = new List<Book>();
     }
 
-    public bool Load(Stream inputStream)
+    public override bool Load(Stream inputStream)
     {
         Books.Clear();
         var document = new XmlDocument();
@@ -42,9 +40,5 @@ public class DOMParser : IParser
         }
 
         return true;
-    }
-    public IList<Book> Find(FilterOptions filters)
-    {
-        return Books.Where(filters.ValidateBook).ToList();
     }
 }

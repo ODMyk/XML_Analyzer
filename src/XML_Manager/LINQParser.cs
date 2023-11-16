@@ -3,21 +3,14 @@ using System.Xml.Linq;
 
 namespace XML_Manager;
 
-public class LINQParser : IParser
+public class LINQParser : Parser
 {
-    private readonly IList<Book> Books;
-
     public LINQParser()
     {
         Books = new List<Book>();
     }
-    public IList<Book> Find(FilterOptions filters)
-    {
-        return Books.Where(filters.ValidateBook).ToList();
 
-    }
-
-    public bool Load(Stream inputStream)
+    public override bool Load(Stream inputStream)
     {
         XDocument document;
         using var reader = XmlReader.Create(inputStream, XMLValidator.Settings);
