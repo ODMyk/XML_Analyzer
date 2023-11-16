@@ -16,7 +16,7 @@
 		<ApplicationTitle>XML Analyzer</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.xmlanalyzer</ApplicationId>
+		<ApplicationId>com.dmyko.xmlanalyzer</ApplicationId>
 		<ApplicationIdGuid>3eba2cad-c815-420a-ac56-e84a9cd9267e</ApplicationIdGuid>
 
 		<!-- Versions -->
